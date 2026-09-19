@@ -305,7 +305,7 @@ public class MaterialDataTable<T> extends AbstractDataTable<T> implements Insert
     private void reindexToggles() {
         int colOffset = getView().getColumnOffset();
         $("li", menu).each((index, e) -> {
-            String ref = getView().getId() + "-col" + ((Double) index + colOffset);
+            String ref = getView().getId() + "-col" + (((Number) index).intValue() + colOffset);
 
             JQueryElement input = $(e).find("input");
             input.attr("id", ref);
