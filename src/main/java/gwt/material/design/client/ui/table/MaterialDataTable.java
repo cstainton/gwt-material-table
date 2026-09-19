@@ -339,6 +339,17 @@ public class MaterialDataTable<T> extends AbstractDataTable<T> implements Insert
         }
     }
 
+    @Override
+    protected void onUnload() {
+        // A stretched table hides the body's scrollbar. Put it back when the table
+        // goes away, or the page it left behind cannot be scrolled.
+        if ($this().hasClass(TableCssName.STRETCH)) {
+            $this().removeClass(TableCssName.STRETCH);
+            body().removeClass(TableCssName.OVERFLOW_HIDDEN);
+        }
+        super.onUnload();
+    }
+
     public MaterialIcon getStretchIcon() {
         return stretchIcon;
     }
